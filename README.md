@@ -1,0 +1,1 @@
+# ai_fortune_of_the_day
