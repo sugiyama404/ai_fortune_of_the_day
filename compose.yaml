@@ -1,25 +1,25 @@
 services:
-  # web:
-  #   restart: always
-  #   build:
-  #     context: ./webserver
-  #     target: development
-  #   container_name: "web_fortune"
-  #   tty: true
-    # command: ["npm", "run", "dev"]
-    # environment:
-    # - API_ENDPOINT=http://api:8000/
-    # volumes:
-    #   - ./webserver/app:/usr/src/app
-    #   - /usr/src/app/node_modules
-    # ports:
-    #   - 80:80
+  web:
+    restart: always
+    build:
+      context: ./webserver
+      target: development
+    container_name: "web_fortune"
+    tty: true
+    command: ["npm", "run", "dev"]
+    environment:
+    - API_ENDPOINT=http://api:8000/
+    volumes:
+      - ./webserver/app:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - 80:80
   api:
     restart: always
     build: ./apserver
     container_name: "api_fortune"
     working_dir: /opt/myapp
-    # command: ["python","manage.py","runserver","0.0.0.0:8000"]
+    command: ["python","manage.py","runserver","0.0.0.0:8000"]
     environment:
       DATABASE_NAME: myproject
       USER_NAME: pythonMySql1
